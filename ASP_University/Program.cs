@@ -6,12 +6,11 @@ var company = new Company
 {
     Name = "Example Company",
     Employees = 1000,
-    HeadquartersLocation = "Some City"
 };
 
 app.MapGet("/", context =>
 {
-    return context.Response.WriteAsync($"Company: {company.Name}, Employees: {company.Employees}, Headquarters: {company.HeadquartersLocation}");
+    return context.Response.WriteAsync($"Company: {company.Name}, Employees: {company.Employees}");
 });
 
 app.Run();
