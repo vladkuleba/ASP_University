@@ -1,6 +1,16 @@
-﻿namespace ASP_University
-{
-    public class companies
+﻿{
+  "Companies": [
     {
+      "Name": "Microsoft",
+      "Employees": 150000
+    },
+    {
+      "Name": "Apple",
+      "Employees": 100000
+    },
+    {
+      "Name": "Google",
+      "Employees": 130000
     }
+  ]
 }

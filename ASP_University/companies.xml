@@ -1,6 +1,14 @@
-﻿namespace ASP_University
-{
-    public class companies
-    {
-    }
-}
+﻿<Companies>
+	<Company>
+		<Name>Microsoft</Name>
+		<Employees>150000</Employees>
+	</Company>
+	<Company>
+		<Name>Apple</Name>
+		<Employees>100000</Employees>
+	</Company>
+	<Company>
+		<Name>Google</Name>
+		<Employees>130000</Employees>
+	</Company>
+</Companies>
