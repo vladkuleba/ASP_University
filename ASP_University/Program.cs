@@ -1,28 +1,26 @@
+using ASP_University;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-var company = new Company
-{
-    Name = "Example Company",
-    Employees = 1000,
-};
+var config = new ConfigurationBuilder()
+    .AddXmlFile("companies.xml", optional: true, reloadOnChange: true)
+    .AddJsonFile("companies.json", optional: true, reloadOnChange: true)
+    .AddIniFile("companies.ini", optional: true, reloadOnChange: true)
+    .Build();
 
-app.MapGet("/", context =>
+// ????????????? IConfiguration ?? ??????
+app.Services.AddSingleton<IConfiguration>(config);
+
+// ????????? ??????? CompanyConfigService ?? ?????????? ???????????
+app.Services.AddSingleton<CompanyConfigService>();
+
+app.MapGet("/", async context =>
 {
-    return context.Response.WriteAsync($"Company: {company.Name}, Employees: {company.Employees}");
+    var companyService = context.RequestServices.GetRequiredService<CompanyConfigService>();
+    var companyWithMostEmployees = companyService.GetCompanyWithMostEmployees();
+
+    await context.Response.WriteAsync($"Company with the most employees: {companyWithMostEmployees}");
 });
 
 app.Run();
-
-
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
-
-public class Company
-{
-    public string Name { get; set; }
-    public int Employees { get; set; }
-    public string HeadquartersLocation { get; set; }
-}
