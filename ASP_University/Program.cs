@@ -1,20 +1,17 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration
+    .AddJsonFile("companies.json")
+    .AddXmlFile("companies.xml")
+    .AddIniFile("companies.ini");
+
 var app = builder.Build();
-
-var iniName = "companies.ini";
-var jsonName = "companies.json";
-var xmlName = "companies.xml";
-
-
 
 app.MapGet("/", async context =>
 {
-    var reader = new CompaniesReader();
-    var companyWithMostEmployeesIni = reader.GetCompanyWithMostEmployees(iniName);
-    var companyWithMostEmployeesJson = reader.GetCompanyWithMostEmployees(jsonName);
-    var companyWithMostEmployeesXml = reader.GetCompanyWithMostEmployees(xmlName);
+    //var name = app.Configuration["Companies:Name"];
 
-    await context.Response.WriteAsync($"Company with most employees: {companyWithMostEmployeesIni}");
+    await context.Response.WriteAsync("Hello");
 });
 
 app.Run();
