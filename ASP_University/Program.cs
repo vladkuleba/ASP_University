@@ -9,7 +9,7 @@ var app = builder.Build();
 
 app.MapGet("/", async context =>
 {
-    //var name = app.Configuration["Companies:Name"];
+
 
     await context.Response.WriteAsync("Hello");
 });
