@@ -6,6 +6,7 @@
     {
         _configuration = configuration;
     }
+
     public string GetCompanyWithMostEmployees()
     {
         var companies = _configuration.GetSection("Companies").Get<List<Company>>();

@@ -1,9 +1,10 @@
 ﻿var builder = WebApplication.CreateBuilder();
 builder.Services.AddSingleton<CompanyService>();
-builder.Configuration.AddJsonFile("companies.json");
-builder.Configuration.AddXmlFile("companies.xml");
-builder.Configuration.AddIniFile("companies.ini");
-builder.Configuration.AddJsonFile("userdata.json");
+builder.Configuration
+    .AddJsonFile("companies.json")
+    .AddXmlFile("companies.xml")
+    .AddIniFile("companies.ini")
+    .AddJsonFile("userdata.json");
 
 var app = builder.Build();
 
