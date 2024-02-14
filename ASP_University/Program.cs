@@ -1,4 +1,3 @@
-
 using ASP_University;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +10,7 @@ var company = new Company
     HeadquartersLocation = "Some City"
 };
 
-
 var random = new Random();
-
 
 app.MapGet("/", context =>
 {
