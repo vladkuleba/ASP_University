@@ -1,25 +1,30 @@
-
-using ASP_University;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddTransient<ITimeOfDayService, TimeOfDayService>();
+builder.Services.AddSingleton<CalcService>();
 var app = builder.Build();
 
-var company = new Company
-{
-    Name = "Example Company",
-    Employees = 1000,
-    HeadquartersLocation = "Some City"
-};
+app.MapGet("/time", ([FromServices] ITimeOfDayService timeOfDayService) => timeOfDayService.GetTimeOfDay());
 
+app.MapGet("/add/{a}/{b}", ([FromServices] CalcService calcService, int a, int b) =>
+    calcService.Add(a, b).ToString());
 
-var random = new Random();
+app.MapGet("/subtract/{a}/{b}", ([FromServices] CalcService calcService, int a, int b) =>
+    calcService.Subtract(a, b).ToString());
 
+app.MapGet("/multiply/{a}/{b}", ([FromServices] CalcService calcService, int a, int b) =>
+    calcService.Multiply(a, b).ToString());
 
-app.MapGet("/", context =>
-{
-    var randomNumber = random.Next(101);
-    var randomMessage = $"Random number: {randomNumber}";
-    return context.Response.WriteAsync($"Company: {company.Name}, Employees: {company.Employees}, Headquarters: {company.HeadquartersLocation}" + "\n" + randomMessage);
-});
+app.MapGet("/divide/{a}/{b}", ([FromServices] CalcService calcService, int a, int b) =>
+    calcService.Divide(a, b).ToString());
+
+app.MapGet("/", ([FromServices] ITimeOfDayService timeOfDayService) =>
+    $"The time of day is: {timeOfDayService.GetTimeOfDay()}");
 
 app.Run();
