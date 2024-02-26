@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-
-public interface IBookService
+﻿public interface IBookService
 {
     List<string> GetBooks();
 }
