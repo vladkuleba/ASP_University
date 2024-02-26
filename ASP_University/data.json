@@ -1,5 +1,5 @@
 ﻿{
-  "Books": [ "Book1", "Book2", "Book3" ],
+  "Books": [ "Some book 1", "Some book 2", "Some book 3", "Some book 4", "Some book 5" ],
   "Profiles": {
     "0": "User 0",
     "1": "User 1",
@@ -8,5 +8,5 @@
     "4": "User 4",
     "5": "User 5"
   },
-  "CurrentUser": "CurrentUserInfo"
+  "CurrentUser": "User Info"
 }
