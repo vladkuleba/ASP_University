@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Перевірка Cookie";
+}
+
+<h2>Перевірка Cookie</h2>
+
+@if (ViewBag.CookieValue != null)
+{
+    <p>Значення Cookie: @ViewBag.CookieValue</p>
+}
+else
+{
+    <p>Cookie не знайдено.</p>
+}

@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Головна сторінка";
+}
+
+<h2>Введіть дані</h2>
+
+<form asp-action="SetCookie" method="post">
+    <input type="text" name="value" placeholder="Введіть значення" required />
+    <input type="datetime-local" name="expireDate" required />
+    <button type="submit">Відправити</button>
+</form>
